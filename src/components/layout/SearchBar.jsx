@@ -7,6 +7,9 @@ const SearchBar = ({ busqueda, setBusqueda }) => {
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
       />
+      <button type="button" onClick={() => setBusqueda("")}>
+        Limpiar
+      </button>
     </div>
   )
 }

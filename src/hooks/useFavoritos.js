@@ -3,10 +3,12 @@ import { useLocalStorage } from "./useLocalStorage";
 export function useFavoritos() {
   const [favoritos, setFavoritos] = useLocalStorage("tutienda:favoritos", []);
 
-  const agregarFavorito = (item) => {
-    const yaEsta = favoritos.some((i) => i.id === item.id);
+  const esFavorito = (id) => {
+    return favoritos.some((item) => item.id === id);
+  }
 
-    if (!yaEsta) {
+  const agregarFavorito = (item) => {
+    if (!esFavorito(item.id)) {
       setFavoritos((prev) => [...prev, item]);
     }
   };
@@ -18,6 +20,7 @@ export function useFavoritos() {
   const total = favoritos.length;
 
   return {
+    esFavorito,
     favoritos,
     total,
     agregarFavorito,

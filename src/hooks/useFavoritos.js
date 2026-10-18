@@ -1,7 +1,7 @@
 import { useLocalStorage } from "./useLocalStorage";
 
 export function useFavoritos() {
-  const [favoritos, setFavoritos] = useLocalStorage("tutienda:favoritos", []);
+  const [favoritos, setFavoritos] = useLocalStorage("mangalist:favoritos", []);
 
   const esFavorito = (id) => {
     return favoritos.some((item) => item.id === id);

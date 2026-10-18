@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const CardList = ({ mangas, loading, error }) => {
+const CardList = ({ mangas, loading, error, irAManga }) => {
   if (loading) return <p>Cargando...</p>
   if (error) return <p>{error}</p>
 
@@ -11,7 +11,7 @@ const CardList = ({ mangas, loading, error }) => {
       ) : (
         <div>
           {mangas.map((manga) => (
-            <Card key={manga.id} manga={manga}/>
+            <Card key={manga.id} manga={manga} irAManga={irAManga}/>
           ))}
         </div>
       )}

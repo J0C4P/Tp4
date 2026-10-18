@@ -8,6 +8,9 @@ const normalizarManga = (manga) => ({
   tipo: manga.type,
   estado: manga.status,
   capitulos: manga.chapters,
+  sinopsis: manga.synopsis,
+  autores: manga.authors.map((autor) => autor.name).join(", "),
+  generos: manga.genres.map((genero) => genero.name).join(", "),
 })
 
 export async function buscarMangas({ q, page, limit, signal }) {

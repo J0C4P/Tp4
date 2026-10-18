@@ -1,6 +1,6 @@
 import { useFavoritosContext } from "../../context/FavoritosContext";
 
-const Card = ({ manga }) => {
+const Card = ({ manga, irAManga }) => {
   const { agregarFavorito, quitarFavorito, esFavorito } =useFavoritosContext()
   return (
     <div>
@@ -19,6 +19,9 @@ const Card = ({ manga }) => {
           Agregar a Favoritos
         </button>
       )}
+      <button type="button" onClick={() => irAManga(manga)}>
+        Ver Detalles
+      </button>
     </div>
   )
 }

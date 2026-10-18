@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useMangas } from "../../hooks/useMangas";
+import { useDebounce } from "../../hooks/useDebounce";
 import SearchBar from "../layout/SearchBar";
 import CardList from "../layout/CardList";
 
-const Catalog = () => {
-  const [busqueda, setBusqueda] = useState("")
-  const { mangas, loading, error } = useMangas(busqueda)
+const Catalog = ( {irAManga} ) => {
+  const [ busqueda, setBusqueda ] = useState("")
+  const busquedaRetrasada = useDebounce(busqueda, 400)
+  const { mangas, loading, error } = useMangas(busquedaRetrasada)
 
   return (
     <>
       <h2>Catalogo de Manga</h2>
       <SearchBar busqueda={busqueda} setBusqueda={setBusqueda}></SearchBar>
-      <CardList mangas={mangas} loading={loading} error={error}></CardList>
+      <CardList mangas={mangas} loading={loading} error={error} irAManga={irAManga}></CardList>
     </>
   )
 }

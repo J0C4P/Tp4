@@ -18,15 +18,15 @@ function App() {
   const irAFavoritos = () => {setVista(VISTAS.FAVORITOS)}
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Nav irACatalogo={irACatalogo} irAFavoritos={irAFavoritos}></Nav>
-      <main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
         {vista === VISTAS.CATALOGO && <Catalog irAManga={irAManga}></Catalog>}
         {vista === VISTAS.MANGA && <Manga manga={mangaSeleccionado} irACatalogo={irACatalogo}></Manga>}
         {vista === VISTAS.FAVORITOS && <Favs irAManga={irAManga}></Favs>}
       </main>
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

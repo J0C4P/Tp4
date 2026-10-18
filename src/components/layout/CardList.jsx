@@ -1,15 +1,15 @@
 import Card from "./Card";
 
 const CardList = ({ mangas, loading, error, irAManga }) => {
-  if (loading) return <p>Cargando...</p>
-  if (error) return <p>{error}</p>
+  if (loading) return <p className="py-10 text-center">Cargando...</p>
+  if (error) return <p className="border border-black p-4 text-center font-semibold">{error}</p>
 
   return (
     <div>
       {mangas.length === 0 ? (
-        <p>No hay mangas disponibles.</p>
+        <p className="py-10 text-center">No hay mangas disponibles.</p>
       ) : (
-        <div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {mangas.map((manga) => (
             <Card key={manga.id} manga={manga} irAManga={irAManga}/>
           ))}

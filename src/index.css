@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-white text-black;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply border border-black px-3 py-2 text-xs font-semibold hover:bg-black hover:text-white sm:text-sm;
+  }
+
+  .btn-solid {
+    @apply bg-black text-white hover:bg-white hover:text-black;
+  }
+}

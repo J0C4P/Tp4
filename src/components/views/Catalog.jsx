@@ -11,7 +11,7 @@ const Catalog = ( {irAManga} ) => {
 
   return (
     <>
-      <h2>Catalogo de Manga</h2>
+      <h2 className="mb-4 text-2xl font-black">Catalogo de Manga</h2>
       <SearchBar busqueda={busqueda} setBusqueda={setBusqueda}></SearchBar>
       <CardList mangas={mangas} loading={loading} error={error} irAManga={irAManga}></CardList>
     </>

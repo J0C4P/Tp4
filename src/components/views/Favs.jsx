@@ -15,7 +15,7 @@ const Favs = ( {irAManga} ) => {
 
   return (
     <>
-      <h2>Mis Favoritos</h2>
+      <h2 className="mb-4 text-2xl font-black">Mis Favoritos</h2>
       <SearchBar busqueda={busqueda} setBusqueda={setBusqueda}></SearchBar>
       <CardList mangas={favoritosFiltrados} irAManga={irAManga}></CardList>
     </>

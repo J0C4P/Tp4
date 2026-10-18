@@ -24,6 +24,8 @@ export async function buscarMangas({ q, page, limit, signal }) {
 
   const res = await fetch(`${API_BASE_URL}/manga?${params}`, { signal })
 
+  if (!res.ok) throw new Error(`Error ${res.status}`)
+
   const { data, pagination } = await res.json()
 
   return {

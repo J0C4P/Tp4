@@ -3,7 +3,7 @@ import { buscarMangas } from "../api/mangaApi"
 
 export function useMangas(busqueda) {
   const [mangas, setMangas] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {

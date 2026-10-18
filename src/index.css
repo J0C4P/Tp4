@@ -8,7 +8,7 @@
 
 @layer components {
   .btn {
-    @apply border border-black px-3 py-2 text-xs font-semibold hover:bg-black hover:text-white sm:text-sm;
+    @apply border border-black px-3 py-2 text-xs font-semibold hover:bg-black hover:text-white disabled:pointer-events-none disabled:opacity-50 sm:text-sm;
   }
 
   .btn-solid {

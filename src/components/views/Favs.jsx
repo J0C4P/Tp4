@@ -17,7 +17,15 @@ const Favs = ( {irAManga} ) => {
     <>
       <h2 className="mb-4 text-2xl font-black">Mis Favoritos</h2>
       <SearchBar busqueda={busqueda} setBusqueda={setBusqueda}></SearchBar>
-      <CardList mangas={favoritosFiltrados} irAManga={irAManga}></CardList>
+      <CardList
+        mangas={favoritosFiltrados}
+        irAManga={irAManga}
+        mensajeVacio={
+          favoritos.length === 0
+            ? "Todavía no guardaste favoritos."
+            : "Ningún favorito coincide con tu búsqueda."
+        }
+      ></CardList>
     </>
   )
 }

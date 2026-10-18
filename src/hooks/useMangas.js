@@ -3,8 +3,14 @@ import { buscarMangas } from "../api/mangaApi"
 
 export function useMangas(busqueda) {
   const [mangas, setMangas] = useState([])
+  const [hayMas, setHayMas] = useState(false)
+  const [paginaActual, setPaginaActual] = useState({ busqueda, numero: 1 })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  const pagina = paginaActual.busqueda === busqueda ? paginaActual.numero : 1
+
+  const cargarMas = () => setPaginaActual({ busqueda, numero: pagina + 1 })
 
   useEffect(() => {
     const controller = new AbortController()
@@ -13,13 +19,14 @@ export function useMangas(busqueda) {
       setLoading(true)
       setError(null)
       try {
-        const { items } = await buscarMangas({
+        const resultado = await buscarMangas({
           q: busqueda,
-          page: 1,
+          page: pagina,
           limit: 24,
           signal: controller.signal,
         })
-        setMangas(items)
+        setMangas((anteriores) => (pagina === 1 ? resultado.items : [...anteriores, ...resultado.items]))
+        setHayMas(resultado.hayMas)
       } catch {
         if (controller.signal.aborted) return
         setError("No pudimos cargar los mangas. Revisá tu conexión.")
@@ -31,7 +38,14 @@ export function useMangas(busqueda) {
     cargar()
 
     return () => controller.abort()
-  }, [busqueda])
+  }, [busqueda, pagina])
 
-  return { mangas, loading, error }
+  return {
+    mangas,
+    hayMas,
+    error,
+    loading: loading && pagina === 1,
+    cargandoMas: loading && pagina > 1,
+    cargarMas,
+  }
 }

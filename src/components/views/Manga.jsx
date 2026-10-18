@@ -1,25 +1,22 @@
 import { useFavoritosContext } from "../../context/FavoritosContext";
 
-const Manga = ( {manga, irACatalogo, irAFavoritos} ) => {
+const Manga = ( {manga, irACatalogo} ) => {
   const { agregarFavorito, quitarFavorito, esFavorito } =  useFavoritosContext();
   return (
     <>
       <button type="button" onClick={irACatalogo}>
         Volver al Catálogo
       </button>
-      <button type="button" onClick={irAFavoritos}>
-        Ir a Favoritos
-      </button>
       <h2>Detalles</h2>
       <h3>{manga.titulo}</h3>
       <img src={manga.imagen} alt={manga.titulo} />
-      <p>Score: {manga.score}</p>
-      <p>Tipo: {manga.tipo}</p>
-      <p>Estado: {manga.estado}</p>
-      <p>Sinopsis: {manga.sinopsis}</p>
-      <p>Capítulos: {manga.capitulos}</p>
-      <p>Generos: {manga.generos}</p>
-      <p>Autores: {manga.autores}</p>
+      <p>Score: {manga.score ?? "N/A"}</p>
+      <p>Tipo: {manga.tipo ?? "N/A"}</p>
+      <p>Estado: {manga.estado ?? "N/A"}</p>
+      <p>Sinopsis: {manga.sinopsis ?? "N/A"}</p>
+      <p>Capítulos: {manga.capitulos ?? "N/A"}</p>
+      <p>Generos: {manga.generos || "N/A"}</p>
+      <p>Autores: {manga.autores || "N/A"}</p>
       {esFavorito(manga.id) ? (
         <button type="button" onClick={() => quitarFavorito(manga.id)}>
           Quitar de Favoritos

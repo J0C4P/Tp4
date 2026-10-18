@@ -6,10 +6,10 @@ const Card = ({ manga, irAManga }) => {
     <div>
       <h3>{manga.titulo}</h3>
       <img src={manga.imagen} alt={manga.titulo} />
-      <p>Score: {manga.score}</p>
-      <p>Tipo: {manga.tipo}</p>
-      <p>Estado: {manga.estado}</p>
-      <p>Capítulos: {manga.capitulos}</p>
+      <p>Score: {manga.score ?? "N/A"}</p>
+      <p>Tipo: {manga.tipo ?? "N/A"}</p>
+      <p>Estado: {manga.estado ?? "N/A"}</p>
+      <p>Capítulos: {manga.capitulos ?? "N/A"}</p>
       {esFavorito(manga.id) ? (
         <button type="button" onClick={() => quitarFavorito(manga.id)}>
           Quitar de Favoritos

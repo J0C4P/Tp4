@@ -1,11 +1,14 @@
 import { useFavoritosContext } from "../../context/FavoritosContext";
 
-const Manga = ( {manga, irACatalogo}) => {
+const Manga = ( {manga, irACatalogo, irAFavoritos} ) => {
   const { agregarFavorito, quitarFavorito, esFavorito } =  useFavoritosContext();
   return (
     <>
       <button type="button" onClick={irACatalogo}>
         Volver al Catálogo
+      </button>
+      <button type="button" onClick={irAFavoritos}>
+        Ir a Favoritos
       </button>
       <h2>Detalles</h2>
       <h3>{manga.titulo}</h3>
